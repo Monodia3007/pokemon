@@ -1,5 +1,5 @@
-from Pokeclass import Pokemon, Trainer
-from Moveclass import Moves
+from PokeClass import Pokemon, Trainer
+from MoveClass import Moves
 from TrainerClass import Trainer
 
 
