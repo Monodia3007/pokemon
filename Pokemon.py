@@ -1,5 +1,5 @@
-from PokeClass import Pokemon, Trainer
-from MoveClass import Moves
+from Pokeclass import Pokemon
+from Moveclass import Moves
 from TrainerClass import Trainer
 
 
@@ -45,7 +45,9 @@ def combattre(joueur1, joueur2):
                 selected_move1 = None
                 selected_move2 = None
             else:
-                joueur1.pokemons[fighting_pokemon1].attaque(joueur1.pokemons[fighting_pokemon1].moves[selected_move2], joueur2.pokemons[fighting_pokemon2])  # Le Pokémon du joueur 1 attaque le Pokémon du joueur 2
+                joueur1.pokemons[fighting_pokemon1].attaque(joueur1.pokemons[fighting_pokemon1].moves[selected_move2],
+                                                            joueur2.pokemons[fighting_pokemon2])
+                # Le Pokémon du joueur 1 attaque le Pokémon du joueur 2
                 print(joueur2.pokemons[fighting_pokemon2].nom + " :", joueur2.pokemons[fighting_pokemon2].pv_actuels)
                 print(joueur1.pokemons[fighting_pokemon1].nom + " :", joueur1.pokemons[fighting_pokemon1].pv_actuels)
                 if joueur2.pokemons[fighting_pokemon2].etre_ko():  # Vérifie si la team du joueur 2 est KO après la
@@ -56,7 +58,9 @@ def combattre(joueur1, joueur2):
                     else:
                         fighting_pokemon2 = joueur2.pokemon_standing()  # Vérifie quel pokemon n'est pas encore KO
                         # pour l'envoyer au combat
-                joueur2.pokemons[fighting_pokemon2].attaque(joueur2.pokemons[fighting_pokemon2].moves[selected_move2], joueur1.pokemons[fighting_pokemon1])  # Le Pokémon du joueur 2 attaque le Pokémon du joueur 1
+                joueur2.pokemons[fighting_pokemon2].attaque(joueur2.pokemons[fighting_pokemon2].moves[selected_move2],
+                                                            joueur1.pokemons[fighting_pokemon1])
+                # Le Pokémon du joueur 2 attaque le Pokémon du joueur 1
                 print(joueur2.pokemons[fighting_pokemon2].nom + " :", joueur2.pokemons[fighting_pokemon2].pv_actuels)
                 print(joueur1.pokemons[fighting_pokemon1].nom + " :", joueur1.pokemons[fighting_pokemon1].pv_actuels)
                 if joueur1.pokemons[fighting_pokemon1].etre_ko():  # Vérifie si la team du joueur 1 est KO après la
@@ -71,7 +75,9 @@ def combattre(joueur1, joueur2):
                 selected_move2 = None
         if selected_move1 is not None and selected_move2 is None:  # Vérifie si le joueur 1 a choisi l'attaque et
             # l'autre non
-            joueur1.pokemons[fighting_pokemon1].attaque(joueur1.pokemons[fighting_pokemon1].moves[selected_move1], joueur2.pokemons[fighting_pokemon2])  # Le Pokémon du joueur 1 attaque le Pokémon du joueur 2
+            joueur1.pokemons[fighting_pokemon1].attaque(joueur1.pokemons[fighting_pokemon1].moves[selected_move1],
+                                                        joueur2.pokemons[fighting_pokemon2])
+            # Le Pokémon du joueur 1 attaque le Pokémon du joueur 2
             print(joueur2.pokemons[fighting_pokemon2].nom + " :", joueur2.pokemons[fighting_pokemon2].pv_actuels)
             print(joueur1.pokemons[fighting_pokemon1].nom + " :", joueur1.pokemons[fighting_pokemon1].pv_actuels)
             if joueur2.pokemons[fighting_pokemon2].etre_ko():  # Vérifie si la team du joueur 2 est KO après la mort
@@ -86,7 +92,9 @@ def combattre(joueur1, joueur2):
             selected_move2 = None
         if selected_move1 is None and selected_move2 is not None:  # Vérifie si le joueur 2 a choisi l'attaque et
             # l'autre non
-            joueur2.pokemons[fighting_pokemon2].attaque(joueur2.pokemons[fighting_pokemon2].moves[selected_move2], joueur1.pokemons[fighting_pokemon1])  # Le Pokémon du joueur 2 attaque le Pokémon du joueur 1
+            joueur2.pokemons[fighting_pokemon2].attaque(joueur2.pokemons[fighting_pokemon2].moves[selected_move2],
+                                                        joueur1.pokemons[fighting_pokemon1])
+            # Le Pokémon du joueur 2 attaque le Pokémon du joueur 1
             print(joueur2.pokemons[fighting_pokemon2].nom + " :", joueur2.pokemons[fighting_pokemon2].pv_actuels)
             print(joueur1.pokemons[fighting_pokemon1].nom + " :", joueur1.pokemons[fighting_pokemon1].pv_actuels)
             if joueur1.pokemons[fighting_pokemon1].etre_ko():  # Vérifie si la team du joueur 1 est KO après la mort
@@ -128,7 +136,8 @@ def choix_pokemon(joueur):
     print(separation)
     fighting_pokemon = int(input("Choisissez un pokemon :")) - 1  # Demande au joueur 1 quel Pokémon il veut
     assert (
-            len(joueur.pokemons) > fighting_pokemon >= 0), "La valeur indiqué n'est pas valide. Il faut qu'elle soit entre 1 et le nombre total de Pokémon"
+            len(joueur.pokemons) > fighting_pokemon >= 0), "La valeur indiqué n'est pas valide." \
+                                                           " Il faut qu'elle soit entre 1 et le nombre total de Pokémon"
     return fighting_pokemon, selected_move
 
 
@@ -138,7 +147,9 @@ def choix_attaque(joueur, fighting_pokemon):
     print(separation)
     selected_move = int(input("Choisissez une attaque :")) - 1  # Demande au joueur 1 quelle attaque il veut
     assert (len(joueur.pokemons[
-                    fighting_pokemon].moves) > selected_move >= 0), "La valeur indiqué n'est pas valide. Il faut qu'elle soit entre 1 et le nombre total d'attaque"
+                    fighting_pokemon].moves) > selected_move >= 0), "La valeur indiqué n'est pas valide." \
+                                                                    " Il faut qu'elle soit entre 1 et le nombre total" \
+                                                                    " d'attaque"
     return selected_move
 
 
@@ -183,7 +194,8 @@ dragonair = Pokemon("Dragonair", "Dragon", None, 134, 149, 128, 168, 134, 134)
 jose = Trainer("José", [pikachu, eevee])
 robert = Trainer("Robert", [charizard, mewtwo])
 
-separation = "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- "
+separation = "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-" \
+             "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- "
 winner = "le vainqueur est "
 
 combattre(jose, robert)
