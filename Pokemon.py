@@ -1,5 +1,6 @@
 from Pokeclass import Pokemon, Trainer
 from Moveclass import Moves
+from TrainerClass import Trainer
 
 
 def combattre(joueur1, joueur2):
