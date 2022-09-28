@@ -1,5 +1,4 @@
 from random import randint, choice
-from typing import List, Any
 
 
 class Moves:
